@@ -8,7 +8,7 @@ challengeType: 1
 <section id='description'>
 You can specify the lower and upper number of patterns with <code>quantity specifiers</code> using curly brackets. Sometimes you only want to specify the lower number of patterns with no upper limit.
 To only specify the lower number of patterns, keep the first number followed by a comma.
-For example, to match only the string <code>"hah"</code> with the letter <code>a</code> appearing at least <code>3</code> times, your regex would be <code>/ha{3,}h/</code>.
+For example, to match the string <code>"hah"</code> with the letter <code>a</code> appearing at least <code>3</code> times, your regex would be <code>/ha{3,}h/</code>.
 <blockquote>let A4 = "haaaah";<br>let A2 = "haah";<br>let A100 = "h" + "a".repeat(100) + "h";<br>let multipleA = /ha{3,}h/;<br>multipleA.test(A4); // Returns true<br>multipleA.test(A2); // Returns false<br>multipleA.test(A100); // Returns true</blockquote>
 </section>
 
@@ -24,6 +24,10 @@ Change the regex <code>haRegex</code> to match the word <code>"Hazzah"</code> on
 tests:
   - text: Your regex should use curly brackets.
     testString: assert(haRegex.source.match(/{.*?}/).length > 0, 'Your regex should use curly brackets.');
+  - text: Your regex should not match <code>"zz"</code>
+    testString: assert(!haRegex.test("zz"), 'Your regex should not match <code>"zz"</code>');
+  - text: Your regex should not match <code>"zzzz"</code>
+    testString: assert(!haRegex.test("zzzz"), 'Your regex should not match <code>"zzzz"</code>');
   - text: Your regex should not match <code>"Hazzah"</code>
     testString: assert(!haRegex.test("Hazzah"), 'Your regex should not match <code>"Hazzah"</code>');
   - text: Your regex should not match <code>"Hazzzah"</code>
@@ -63,7 +67,7 @@ let result = haRegex.test(haStr);
 
 ```js
 let haStr = "Hazzzzah";
-let haRegex = /z{4,}/; // Change this line
+let haRegex = /Haz{4,}ah/;
 let result = haRegex.test(haStr);
 ```
 </section>
